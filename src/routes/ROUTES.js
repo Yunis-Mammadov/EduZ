@@ -1,5 +1,6 @@
+import About from "../pages/About";
 import Achievements from "../pages/Achievements";
-import Contacts from "../pages/Contacts";
+import Contact from "../pages/Contact";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import MainRoot from "../pages/MainRoot";
@@ -15,8 +16,12 @@ export const ROUTES = [
                 element: <Home/>
             },
             {
-                path: '/contacts',
-                element: <Contacts/>
+                path: '/contact',
+                element: <Contact/>
+            },
+            {
+                path: '/about',
+                element: <About/>
             },
             {
                 path: '/achievements',
