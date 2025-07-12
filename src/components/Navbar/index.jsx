@@ -29,7 +29,7 @@ const Navbar = () => {
                 <div className="logo">EduZ</div>
               </Link>
             </div>
-            <Link to="#" className="nostyle">
+            <Link to="/login" className="nostyle">
               <button className="login-btn">Login</button>
             </Link>
           </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
               <li><Link to="/contact">Contact</Link></li>
               <li><Link to="/dashboard">Dashboard</Link></li>
             </ul>
-            <Link className="nostyle" to="#">
+            <Link to="/login" className="nostyle">
               <button className="login-btn">Login</button>
             </Link>
           </div>
