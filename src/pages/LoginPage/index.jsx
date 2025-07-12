@@ -10,7 +10,7 @@ const LoginPage = () => {
         </div>
 
         <div className="login-form">
-          <h2>Sign up</h2>
+          <h2>Sign In</h2>
 
           <form>
             <div className="input-group">
@@ -37,7 +37,7 @@ const LoginPage = () => {
             <span>Or login with</span>
             <div className="icons">
               <i className="fab fa-google google"></i>
-              <i class="fa-solid fa-envelope google"></i>
+              <i className="fa-solid fa-envelope google"></i>
             </div>
           </div>
         </div>

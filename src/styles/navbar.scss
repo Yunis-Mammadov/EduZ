@@ -74,8 +74,8 @@
 
             .login-btn {
                 padding: 0.25rem 1rem;
-                background-color: transparent;
-                color: #36506b;
+                color: white;
+                background-color: #36506b;
                 border: 2px solid #36506b;
                 font-weight: 600;
                 font-size: 1rem;
@@ -86,8 +86,8 @@
                 overflow: hidden;
 
                 &:hover {
-                    color: white;
-                    background-color: #36506b;
+                    color: #36506b;
+                    background-color: transparent;
                     box-shadow: 0 4px 12px rgba(54, 80, 107, 0.4);
                     transform: translateY(-2px);
                 }
@@ -95,6 +95,7 @@
                 &:active {
                     transform: scale(0.98);
                 }
+
             }
         }
     }
@@ -163,14 +164,14 @@
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease-in-out;
-            transform: translateX(0); 
+            transform: translateX(0);
 
             &.close {
-                transform: translateX(-100%); 
+                transform: translateX(-100%);
             }
 
             &.open {
-                transform: translateX(0); 
+                transform: translateX(0);
             }
 
             .close-icon {

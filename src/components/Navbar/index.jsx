@@ -4,6 +4,7 @@ import { useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import '../../styles/navbar.scss';
+import '../../index.css'
 
 const Navbar = () => {
   const isMobile = useMediaQuery('(max-width:768px)');

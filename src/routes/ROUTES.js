@@ -46,11 +46,11 @@ export const ROUTES = [
         children: [
             {
                 path: '/login',
-                element: <LoginPage />
+                element: <LoginPage/>
             },
             {
                 path: '/register',
-                element: <RegisterPage />
+                element: <RegisterPage/>
             }
         ]
     }
