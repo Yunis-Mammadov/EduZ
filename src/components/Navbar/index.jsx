@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import '../../styles/navbar.scss';
-import '../../index.css'
+import '../../styles/main.scss';
 
 const Navbar = () => {
   const isMobile = useMediaQuery('(max-width:768px)');

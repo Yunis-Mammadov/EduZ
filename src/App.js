@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-router-dom';
 import { ROUTES } from './routes/ROUTES';
 import Loading from './pages/Loading';
+import './styles/main.scss'
 
 // function AppRouter() {
 //   const location = useLocation();
