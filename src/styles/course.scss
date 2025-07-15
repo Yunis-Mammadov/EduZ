@@ -1,0 +1,58 @@
+.course-section {
+    text-align: center;
+    background-color: whitesmoke;
+
+    .course-title {
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        color: rgb(54, 80, 107);
+    }
+
+    .marquee-wrapper {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .marquee-track {
+        display: inline-block;
+        animation: scrollLeft 30s linear infinite;
+
+        &:hover{
+            cursor: pointer;
+            animation-play-state: paused;
+        }
+    }
+
+    .course-button {
+        display: inline-block;
+        margin: 0 1rem;
+        padding: 10px 20px;
+        background-color: #36506b;
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        font-family: $font-heading;
+        font-size: 1rem;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: #357ab7;
+        }
+    }
+
+    @keyframes scrollLeft {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+}
