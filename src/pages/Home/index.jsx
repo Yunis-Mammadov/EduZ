@@ -1,6 +1,7 @@
 import Books from "./Books"
 import CourseWrapper from "./CourseWrapper"
 import Hero from "./Hero"
+import Zoom from "./Zoom"
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Hero />
       <Books />
       <CourseWrapper />
+      <Zoom />
     </div>
   )
 }
