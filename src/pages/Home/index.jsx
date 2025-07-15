@@ -1,9 +1,11 @@
+import Books from "./Books"
 import Hero from "./Hero"
 
 const Home = () => {
   return (
-    <div>
-      <Hero />
+    <div style={{backgroundColor:"whitesmoke"}}>
+      <Hero /> 
+      <Books />
     </div>
   )
 }

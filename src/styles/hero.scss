@@ -41,23 +41,25 @@
         margin-bottom: 2rem;
 
         .hero__link {
+            font-family: $font-heading;
             font-weight: 600;
             text-decoration: none;
             color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-
+            
             &:hover {
                 color: #36506b;
             }
         }
-
+        
         .login-btn {
             padding: 0.45rem 0.8rem;
             color: white;
             background-color: #36506b;
             border: 2px solid #36506b;
+            font-family: $font-heading;
             font-weight: 600;
             font-size: 0.9rem;
             border-radius: 8px;
@@ -88,7 +90,7 @@
         span {
             font-family: $font-heading;
             font-size: 1.5rem;
-            font-weight: 500;
+            font-weight: 600;
             color: rgb(54, 80, 107);
         }
 
