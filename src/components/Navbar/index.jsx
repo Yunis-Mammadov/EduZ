@@ -56,6 +56,7 @@ const Navbar = () => {
           <div className='btn-links'>
             <ul className="nav-links">
               <li><Link to="/">Home</Link></li>
+              <li><Link to="/courses">Courses</Link></li>
               <li><Link to="/achievements">Achievements</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>

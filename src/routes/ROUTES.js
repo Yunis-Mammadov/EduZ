@@ -8,6 +8,7 @@ import MainRoot from "../pages/MainRoot";
 import LoginRoot from "../pages/LoginRoot";
 import NotFound from "../pages/NotFound";
 import RegisterPage from "../pages/Register";
+import Courses from "../pages/Courses";
 
 export const ROUTES = [
     {
@@ -19,16 +20,20 @@ export const ROUTES = [
                 element: <Home />
             },
             {
-                path: '/contact',
-                element: <Contact />
+                path: '/achievements',
+                element: <Achievements />
+            },
+            {
+                path: '/courses',
+                element: <Courses />
             },
             {
                 path: '/about',
                 element: <About />
             },
             {
-                path: '/achievements',
-                element: <Achievements />
+                path: '/contact',
+                element: <Contact />
             },
             {
                 path: '/dashboard',

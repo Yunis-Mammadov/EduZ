@@ -1,6 +1,8 @@
 import Books from "./Books"
 import CourseWrapper from "./CourseWrapper"
+import Faq from "./Faq"
 import Hero from "./Hero"
+import Plugins from "./Plugins"
 import Zoom from "./Zoom"
 
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
       <Books />
       <CourseWrapper />
       <Zoom />
+      <Plugins />
+      <Faq />
     </div>
   )
 }
