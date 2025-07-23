@@ -1,0 +1,183 @@
+.contact-wrapper {
+    background-color: whitesmoke;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 2rem;
+
+    .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: #ccc;
+    }
+
+    .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        border-radius: 16px;
+        padding: 3rem;
+        gap: 2rem;
+        flex-wrap: wrap;
+        background-color: rgb(40, 64, 90);
+
+        .form-box {
+            flex: 1;
+            text-align: left;
+
+            h3 {
+                font-family: $font-heading;
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                line-height: 2.5;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                .row {
+                    display: flex;
+                    gap: 1rem;
+
+                    input {
+                        flex: 1;
+                    }
+                }
+
+                input,
+                textarea {
+                    background: whitesmoke;
+                    border: 1px solid #333;
+                    border-radius: 6px;
+                    padding: 0.8rem;
+                    color: black;
+                    font-family: $font-heading;
+                    font-size: 0.95rem;
+                }
+
+                button {
+                    background: linear-gradient(to right, #c026d3, #7c3aed);
+                    border: none;
+                    border-radius: 6px;
+                    padding: 0.9rem;
+                    color: white;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: 0.3s;
+
+                    &:hover {
+                        filter: brightness(1.2);
+                    }
+                }
+            }
+        }
+
+        .astro-box {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 50%;
+
+            img {
+                max-width: 80%;
+                border-radius: 8px;
+                // background-color: blue;
+            }
+
+            .quote {
+                font-size: 0.85rem;
+                color: #ccc;
+
+                span {
+                    display: block;
+                    margin-top: 0.5rem;
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4ade80;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: $font-heading;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1100px) {
+    .contact-wrapper {
+        .contact-container {
+
+            .form-box {
+                width: 80%;
+
+
+
+                .row {}
+
+            }
+
+            .astro-box {
+                width: 100%;
+                min-height: auto;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+
+
+        .row {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .contact-container {
+
+            .form-box {
+                h3 {
+                    background-color: red;
+                    text-align: center;
+                    line-height: 2;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .astro-box {
+                width: 100%;
+                min-height: auto;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .modal {
+        position: fixed;
+        bottom: 10rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4ade80;
+        color: #000;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-family: $font-heading;
+        font-weight: 500;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+}

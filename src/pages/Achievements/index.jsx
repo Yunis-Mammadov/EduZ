@@ -2,10 +2,23 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import GroupsIcon from '@mui/icons-material/Groups';
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
+import { useEffect } from 'react';
+import AOS from 'aos';
 import { Link } from 'react-router-dom'
 
 const Achievements = () => {
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []); useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  }, []);
 
   const teamMembers = [
     {
@@ -28,7 +41,7 @@ const Achievements = () => {
   return (
     <>
       <div className='achieve-container'>
-        <div className='achieve-section'>
+        <div className='achieve-section' data-aos='fade-up'>
           <div className='achieve-title'>
             <h1>Consulting Success</h1>
             <p>Through our platform, you can receive consulting in various fields from anywhere in the world and unlock your full potential. With flexible online access and personalized solutions tailored to your unique needs, we empower you to grow, adapt, and succeed—no matter where you are.</p>
@@ -68,7 +81,7 @@ const Achievements = () => {
 
         <section className="team-section">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-card">
+            <div key={index} className="team-card" data-aos='fade-right'>
               <div className={`team-image ${member.imgClass}`} />
               <div className="team-info">
                 <h3>{member.name}
@@ -81,51 +94,6 @@ const Achievements = () => {
             </div>
           ))}
         </section>
-
-
-
-
-        {/* <div className='recom-container'>
-          <div className='recom-section'>
-            <img src="albert.svg" alt="student1" />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div>
-                <h1 className='student'>Albert</h1>
-                <Link target='blank' to={'https://github.com'}>
-                  <button className='github-btn'>github</button>
-                </Link>
-              </div>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, illum.</p>
-            </div>
-          </div>
-          <div className='recom-section'>
-            <img src="alex.svg" alt="student2" />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div>
-                <h1 className='student'>Albert</h1>
-                <Link target='blank' to={'https://github.com'}>
-                  <button className='github-btn'>github</button>
-                </Link>
-              </div>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, illum.</p>
-            </div>
-          </div>
-          <div className='recom-section'>
-            <img src="john.svg" alt="student3" />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <div>
-                <h1 className='student'>Albert</h1>
-                <Link target='blank' to={'https://github.com'}>
-                  <button className='github-btn'>github</button>
-                </Link>
-              </div>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae, illum.</p>
-            </div>
-          </div>
-        </div> */}
-
-
-
       </div>
     </>
   )
