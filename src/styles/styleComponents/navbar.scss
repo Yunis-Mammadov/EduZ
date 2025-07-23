@@ -1,6 +1,24 @@
 .navbar {
     background-color: whitesmoke;
+    transition: top 0.3s ease;
+    // position: fixed;
+    // width: 100%;
+    // z-index: 1;
 
+
+    // &.fixed-navbar {
+    //     position: fixed;
+    //     top: 0;
+    //     width: 100%;
+    //     z-index: 1000;
+    // }
+
+    // &.hidden-navbar {
+    //     position: fixed;
+    //     top: -110px; // navbar-ın hündürlüyünə uyğun dəyiş
+    //     width: 100%;
+    //     z-index: 1000;
+    // }
 
     .logo {
         font-size: 2.8rem;
@@ -28,16 +46,14 @@
 
         .btn-links {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
-            min-width: 60%;
+            min-width: 55%;
 
             .nav-links {
                 list-style: none;
                 display: flex;
                 gap: 1.5rem;
-
-
 
                 li {
                     a {

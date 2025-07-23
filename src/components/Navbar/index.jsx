@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -9,8 +9,32 @@ const Navbar = () => {
   const isMobile = useMediaQuery('(max-width:768px)');
   const [isOpen, setIsOpen] = useState(false);
 
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  const token = localStorage.getItem('token');
+  const isLoggedIn = !!token
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY) {
+        setShowNavbar(true);
+      } else {
+        setShowNavbar(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${!isMobile ? (showNavbar ? 'fixed-navbar' : 'hidden-navbar') : ''}`}>
       {isMobile ? (
         // ===== MOBILE VIEW =====
         <>
@@ -60,11 +84,18 @@ const Navbar = () => {
               <li><Link to="/achievements">Achievements</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
             </ul>
-            <Link to="/login" className="nostyle">
-              <button className="login-btn">Login</button>
-            </Link>
+            {
+              isLoggedIn ? (
+                <Link to="/dashboard" className="nostyle">
+                  <button className="login-btn">Dashboard</button>
+                </Link>
+              ) : (
+                <Link to="/login" className="nostyle">
+                  <button className="login-btn">Login</button>
+                </Link>
+              )
+            }
           </div>
         </div>
       )}

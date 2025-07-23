@@ -6,7 +6,7 @@ const Footer = () => {
         <button className="login-btn">Visit Now</button>
       </div>
       <div>
-        <p className="footer-text">© Copyright 2025 Upstudy | Developed By Devthrow.</p>
+        <p className="footer-text">© Copyright 2025 | Developed By Yunis Mammadov.</p>
       </div>
     </div>
   )

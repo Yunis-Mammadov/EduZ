@@ -1,0 +1,33 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 999;
+    background-color: #011931;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+
+    .arrow {
+        color: white;
+        font-size: 1.5rem;
+        position: absolute;
+    }
+
+    svg.progress-ring {
+        position: absolute;
+        transform: rotate(-90deg);
+    }
+
+    .progress-ring__circle {
+        transition: stroke-dashoffset 0.3s;
+        transform: rotate(0deg);
+        transform-origin: 50% 50%;
+    }
+}

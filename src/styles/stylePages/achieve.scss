@@ -1,0 +1,233 @@
+.achieve-container {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    text-align: center;
+    overflow-x: hidden;
+
+    .achieve-section {
+        width: 70%;
+        margin: 0 auto;
+
+        .achieve-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 60%;
+            margin: 0 auto;
+
+            h1 {
+                font-family: $font-heading;
+                font-size: 3.4rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                line-height: 1.3;
+            }
+
+            p {
+                width: 90%;
+                font-size: 1rem;
+                color: #555;
+                margin-bottom: 1rem;
+                text-align: justify;
+            }
+        }
+
+        .achieve-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 17rem);
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem;
+
+            .cards-title {
+                background-color: rgb(54, 80, 107);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 15rem;
+                gap: 2rem;
+                border: 3px solid black;
+                transition: 0.3s ease-in;
+
+                &:hover {
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+                        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                    border: 1px solid black;
+                    cursor: pointer;
+                }
+
+                div {
+                    width: 60%;
+                    height: 5rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    p {
+                        font-family: $font-heading;
+                        font-size: 1.2rem;
+                        color: white;
+                    }
+                }
+
+                h1 {
+                    font-family: $font-heading;
+                    font-size: 1.7rem;
+                    font-weight: 500;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .team-section {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 0;
+        width: 100%;
+        align-items: center;
+
+        .team-card {
+            display: flex;
+            gap: 2rem;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+            align-items: center;
+            max-width: 700px;
+            width: 90%;
+
+            .team-image {
+                min-width: 150px;
+                height: 150px;
+                background-size: cover;
+                // background-position: center;
+            }
+
+            .alex {
+                background-image: url('../../../public/albert.svg');
+            }
+
+            .gabriel {
+                background-image: url('../../../public/alex.svg');
+                background-position: center;
+            }
+
+            .marcus {
+                background-image: url('../../../public/john.svg');
+            }
+
+            .team-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                h3 {
+                    font-family: $font-heading;
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                    margin-bottom: 1rem;
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    .github-tag {
+                        padding: 0.35rem 0.5rem;
+                        color: white;
+                        background-color: #36506b;
+                        border: 2px solid #36506b;
+                        font-weight: 600;
+                        font-size: 0.8rem;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+
+                        &:hover {
+                            color: #36506b;
+                            background-color: transparent;
+                            box-shadow: 0 4px 12px rgba(54, 80, 107, 0.4);
+                            transform: translateY(-2px);
+                        }
+
+                        &:active {
+                            transform: scale(0.98);
+                        }
+                    }
+                }
+
+                p {
+                    color: #555;
+                    line-height: 1.5;
+                    text-align: start;
+                    width: 100%;
+                }
+            }
+        }
+
+        // Responsive
+
+    }
+
+}
+
+@media (max-width: 768px) {
+    .achieve-container {
+        padding: 2rem 1rem;
+
+        .achieve-section {
+            width: 100%;
+
+            .achieve-title {
+                width: 90%;
+
+                h1 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .achieve-cards {
+                grid-template-columns: repeat(1, 70%);
+                padding: 1.5rem;
+            }
+        }
+
+        .team-section {
+
+            .team-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                .team-info {
+                    justify-content: center;
+
+                    h3 {
+                        justify-content: center;
+                        width: 100%;
+                    }
+
+                    p {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

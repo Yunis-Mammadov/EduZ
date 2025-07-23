@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet, useLocation } from 'react-
 import { ROUTES } from './routes/ROUTES';
 import Loading from './pages/Loading';
 import './styles/main.scss'
+import ScrollToTop from './components/ScrollToTop';
 
 // function AppRouter() {
 //   const location = useLocation();
@@ -44,7 +45,13 @@ function App() {
   //   return <Loading />;
   // }
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      < RouterProvider router={router} />;
+      <ScrollToTop />
+    </>
+
+  )
 }
 
 export default App;
