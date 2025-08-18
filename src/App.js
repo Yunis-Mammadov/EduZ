@@ -5,45 +5,45 @@ import Loading from './pages/Loading';
 import './styles/main.scss'
 import ScrollToTop from './components/ScrollToTop';
 
-// function AppRouter() {
-//   const location = useLocation();
-//   const [loading, setLoading] = useState(false);
+function AppRouter() {
+  const location = useLocation();
+  const [loading, setLoading] = useState(false);
 
-//   useEffect(() => {
-//     setLoading(true);
-//     const timer = setTimeout(() => setLoading(false), 500);
-//     return () => clearTimeout(timer);
-//   }, [location.pathname]);
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
-//   return (
-//     <>
-//       {loading && <Loading />}
-//       <Outlet />
-//     </>
-//   );
-// }
+  return (
+    <>
+      {loading && <Loading />}
+      <Outlet />
+    </>
+  );
+}
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <AppRouter />,
-//     children: ROUTES, 
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppRouter />,
+    children: ROUTES, 
+  },
+]);
 
-const router = createBrowserRouter(ROUTES)
+// const router = createBrowserRouter(ROUTES)
 
 function App() {
-  // const [initialLoading, setInitialLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setInitialLoading(false), 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setInitialLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // if (initialLoading) {
-  //   return <Loading />;
-  // }
+  if (initialLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

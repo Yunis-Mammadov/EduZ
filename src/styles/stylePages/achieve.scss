@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 3rem;
+    padding: 8rem 3rem;
     text-align: center;
     overflow-x: hidden;
 
@@ -111,7 +111,6 @@
                 min-width: 150px;
                 height: 150px;
                 background-size: cover;
-                // background-position: center;
             }
 
             .alex {
@@ -176,16 +175,12 @@
                 }
             }
         }
-
-        // Responsive
-
     }
-
 }
 
 @media (max-width: 768px) {
     .achieve-container {
-        padding: 2rem 1rem;
+        padding: 7rem 1rem;
 
         .achieve-section {
             width: 100%;

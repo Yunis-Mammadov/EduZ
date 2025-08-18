@@ -1,20 +1,209 @@
-@import 'base/variables';
+@import 'base/variables.scss';
 @import 'base/normalize';
 @import 'base/typography';
 
 @import 'styleComponents/navbar';
 @import 'styleComponents/footer';
 @import 'styleComponents/scroll';
+@import 'styleComponents/profile';
 
 
 @import 'stylePages/login';
 @import 'stylePages/achieve';
 @import 'stylePages/contact';
+@import 'stylePages/about';
+@import 'stylePages/courses';
 
 
 @import './styleHome/hero.scss';
 @import './styleHome/books.scss';
-@import './styleHome/course.scss';
+@import './styleHome/courseSection.scss';
 @import './styleHome/zoom.scss';
 @import './styleHome/plugins.scss';
 @import './styleHome/faq.scss';
+
+
+// 🎨 Colors
+$primary: #36506b;
+$primary-dark: #1e3c64;
+$text: rgb(49, 73, 99);
+$bg: whitesmoke;
+$z-navbar: 1000;
+
+.navbar {
+    background-color: $bg;
+    transition: top 0.3s ease;
+    position: fixed;
+    width: 100%;
+    z-index: $z-navbar;
+
+    &--fixed {
+        top: 0;
+    }
+
+    &--hidden {
+        top: -110px;
+    }
+
+    &__logo {
+        font-size: 2.5rem;
+        font-family: "Tomorrow", sans-serif;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.3s ease;
+        color: $primary;
+
+        &:hover {
+            color: $primary-dark;
+        }
+         
+        a{
+            color: $primary;
+        }
+
+    }
+
+    &__desktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 75%;
+        padding: 1.5rem 2rem;
+        margin: 10px auto;
+        // background-color: red;
+
+        .navbar__links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            ul {
+                list-style: none;
+                display: flex;
+                gap: 1.5rem;
+
+                li a {
+                    color: black;
+                    text-decoration: none;
+                    font-size: 1.1rem;
+                    font-family: "Tomorrow", sans-serif;
+                    position: relative;
+                    padding: 0.25rem 0;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $text;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 0;
+                        height: 2px;
+                        bottom: 0;
+                        left: 0;
+                        background-color: $primary;
+                        transition: width 0.3s ease;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    &__btn {
+        padding: 0.4rem 1rem;
+        color: white;
+        background-color: $primary;
+        border: 2px solid $primary;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $primary;
+            background-color: transparent;
+            box-shadow: 0 4px 12px rgba($primary, 0.4);
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    // ======= MOBILE =======
+    @media (max-width: 768px) {
+        &__mobile {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            width: 100%;
+
+            .navbar__hamburger {
+                font-size: 2rem;
+                color: $primary;
+                cursor: pointer;
+            }
+        }
+
+        &__sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 70%; // daha yaxşı UX
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            z-index: $z-navbar;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+
+            &.open {
+                transform: translateX(0);
+            }
+
+            .navbar__close {
+                font-size: 2rem;
+                color: $primary;
+                align-self: flex-end;
+                cursor: pointer;
+                margin-bottom: 2rem;
+
+                &:hover {
+                    color: $primary-dark;
+                }
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+
+                li a {
+                    text-decoration: none;
+                    color: $text;
+                    font-size: 1.2rem;
+                    font-family: "Tomorrow", sans-serif;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,94 +1,81 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { signUp } from '../../api/request';
-import '../../styles/stylePages/login.scss';
+import "../../styles/main.scss"
 
 const RegisterPage = () => {
-
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
-  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = e => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(2, 'Name must be at least 2 characters')
+      .required('Name is required'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .matches(
+        /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{6,}$/,
+        'Password must contain at least 1 uppercase letter, 1 number, 1 special character, minimum 6 characters'
+      )
+      .required('Password is required'),
+  });
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setMessage('');
-
-
+  const handleSubmit = async (values, { setSubmitting, setStatus, resetForm }) => {
+    setStatus(null);
     try {
-      const res = await signUp(form)
-      setMessage('Registered successfully!');
-      setForm({ name: '', email: '', password: '' });
-
-      setTimeout(() => {
-        navigate('/login');
-      }, 1000)
+      await signUp(values);
+      setStatus({ success: 'Registered successfully!' });
+      resetForm();
+      setTimeout(() => navigate('/login'), 1000);
     } catch (error) {
       if (error.response) {
-        setMessage(error.response.data.message || 'Registration failed.');
+        setStatus({ error: error.response.data.message || 'Registration failed.' });
       } else {
-        setMessage('Network error.');
+        setStatus({ error: 'Network error.' });
       }
     }
-  }
-
-
+    setSubmitting(false);
+  };
 
   return (
     <div className="login-container">
       <div className="login-wrapper">
         <div className="login-image">
-          <img src="0.svg" alt="Login Visual" />
+          <img src="0.svg" alt="Register Visual" />
         </div>
 
         <div className="login-form">
           <h2>Sign Up</h2>
 
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <i className="fa fa-user"></i>
-              <input type="text"
-                placeholder="Your Name"
-                name='name'
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <i className="fa-solid fa-envelope" style={{ fontSize: "1.1rem" }}></i>
-              <input
-                type="email"
-                placeholder="Email"
-                name='email'
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <i className="fa fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Password"
-                name='password'
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <Formik
+            initialValues={{ name: '', email: '', password: '' }}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, status }) => (
+              <Form>
+                {['name', 'email', 'password'].map((field) => (
+                  <div className="floating-input" key={field}>
+                    <Field name={field} type={field === 'password' ? 'password' : 'text'} required />
+                    <label>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                    <ErrorMessage name={field} component="p" className="error-message" />
+                  </div>
+                ))}
 
-            <button className="login-btn" type="submit">Sign in</button>
+                <button className="login-btn" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Registering...' : 'Sign Up'}
+                </button>
 
-            {message && <p style={{ color: 'red', marginTop: '10px' }}>{message}</p>}
+                {status?.success && <p className="success-message">{status.success}</p>}
+                {status?.error && <p className="error-message">{status.error}</p>}
+              </Form>
+            )}
+          </Formik>
 
-
-          </form>
           <Link to="/login" className="create-account">
-            Do you have an Account?
+            Already have an account?
           </Link>
 
           <div className="social-login">

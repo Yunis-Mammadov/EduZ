@@ -13,27 +13,22 @@ const Achievements = () => {
       duration: 1000,
       once: true,
     });
-  }, []); useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
   }, []);
 
   const teamMembers = [
     {
       name: 'Alina',
-      role: 'This platform completely transformed the way I learn.I’ve gained real skills that helped me land my first internship!',
+      role: '"This platform completely transformed the way I learn.I’ve gained real skills that helped me land my first internship!"',
       imgClass: 'alex',
     },
     {
       name: 'Gabriel',
-      role: '"I’ve tried several online learning platforms, but none of them matched the depth and clarity of this one. The hands-on projects and real-world applications made everything click. ',
+      role: '"I’ve tried several online learning platforms, but none of them matched the depth and clarity of this one. The hands-on projects and real-world applications made everything click."',
       imgClass: 'gabriel',
     },
     {
       name: 'Marcus',
-      role: 'This platform gave me the confidence to pursue my business ideas. I took courses on digital marketing and business development, and they were incredibly practical.',
+      role: '"This platform gave me the confidence to pursue my business ideas. I took courses on digital marketing and business development, and they were incredibly practical."',
       imgClass: 'marcus',
     },
   ];

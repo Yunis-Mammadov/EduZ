@@ -1,101 +1,120 @@
-import { use, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMediaQuery } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import '../../styles/main.scss';
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../../styles/main.scss";
+import Profile from '../Profile';
 
 const Navbar = () => {
-  const isMobile = useMediaQuery('(max-width:768px)');
+  const isMobile = useMediaQuery("(max-width:768px)");
   const [isOpen, setIsOpen] = useState(false);
-
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
-  const token = localStorage.getItem('token');
-  const isLoggedIn = !!token
 
+  const navLinks = [
+    { path: "/", label: "Home" },
+    { path: "/courses", label: "Courses" },
+    { path: "/achievements", label: "Achievements" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+  ];
+
+  const AuthButton = () =>
+    isLoggedIn ? (
+      <Profile onLogout={() => setIsLoggedIn(false)} />
+    ) : (
+      <Link to="/login" className="nostyle">
+        <button className="navbar__btn">Login</button>
+      </Link>
+    );
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY < lastScrollY) {
+      if (currentScrollY < 200) {
         setShowNavbar(true);
       } else {
-        setShowNavbar(false);
+        setShowNavbar(currentScrollY < lastScrollY);
       }
 
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const debounce = (fn, delay) => {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      };
+    };
+
+    const optimizedScroll = debounce(handleScroll, 50);
+    window.addEventListener("scroll", optimizedScroll);
+    return () => window.removeEventListener("scroll", optimizedScroll);
   }, [lastScrollY]);
 
-  return (
-    <nav className={`navbar ${!isMobile ? (showNavbar ? 'fixed-navbar' : 'hidden-navbar') : ''}`}>
-      {isMobile ? (
-        // ===== MOBILE VIEW =====
-        <>
-          <div className="mobile-navbar">
-            <MenuIcon
-              sx={{
+  const openSidebar = () => setIsOpen(true);
+  const closeSidebar = () => setIsOpen(false);
 
-                backgroundColor: 'transparent',
-                '&:hover': { backgroundColor: 'transparent' },
-                '&:active': { backgroundColor: 'transparent' },
-                '&:focus': { backgroundColor: 'transparent' },
-              }}
-              className="hamburger" onClick={() => setIsOpen(true)} />
-            <div className="center-logo">
-              <Link to="/" className="nostyle">
-                <div className="logo">EduZ</div>
+  return (
+    <nav
+      className={`navbar ${!isMobile ? (showNavbar ? "navbar--fixed" : "navbar--hidden") : ""
+        }`}
+    >
+      {isMobile ? (
+        <>
+          {/* ===== MOBILE VIEW ===== */}
+          <div className="navbar__mobile">
+            <MenuIcon className="navbar__hamburger" onClick={openSidebar} />
+
+            <div className="navbar__logo">
+              <Link to="/" style={{ fontSize: "2rem" }}>
+                Coursia
               </Link>
             </div>
-            <Link to="/login" className="nostyle">
-              <button className="login-btn">Login</button>
-            </Link>
+
+            <AuthButton />
           </div>
 
-          <div className={`sidebar ${isOpen ? 'open' : 'close'}`}>
-            <CloseIcon className="close-icon" onClick={() => setIsOpen(false)} />
+          <div className={`navbar__sidebar ${isOpen ? "open" : "close"}`}>
+            <CloseIcon className="navbar__close" onClick={closeSidebar} />
             <ul>
-              <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-              <li><Link to="/achievements" onClick={() => setIsOpen(false)}>Achievements</Link></li>
-              <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
-              <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
-              <li><Link to="/dashboard" onClick={() => setIsOpen(false)}>Dashboard</Link></li>
+              {navLinks.map((link, i) => (
+                <li key={i}>
+                  <Link to={link.path} onClick={closeSidebar}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              {isLoggedIn && (
+                <li>
+                  <Link to="/dashboard" onClick={closeSidebar}>
+                    Dashboard
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </>
       ) : (
+        <div className="navbar__desktop">
+          <div className="navbar__logo">
+            <Link to="/">Coursia</Link>
+          </div>
 
-
-        // ===== DESKTOP VIEW =====
-        <div className="parent-nav-links">
-          <Link to="/" className="nostyle">
-            <div className="logo">EduZ</div>
-          </Link>
-          <div className='btn-links'>
-            <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/courses">Courses</Link></li>
-              <li><Link to="/achievements">Achievements</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+          <div className="navbar__links">
+            <ul>
+              {navLinks.map((link, i) => (
+                <li key={i}>
+                  <Link to={link.path}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
-            {
-              isLoggedIn ? (
-                <Link to="/dashboard" className="nostyle">
-                  <button className="login-btn">Dashboard</button>
-                </Link>
-              ) : (
-                <Link to="/login" className="nostyle">
-                  <button className="login-btn">Login</button>
-                </Link>
-              )
-            }
+            <AuthButton />
           </div>
         </div>
       )}
