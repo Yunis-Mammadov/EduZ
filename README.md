@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 🎓 Student Panel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple **Student Panel** web application where users can register, log in, and explore various course examples. Built as a portfolio project to showcase modern frontend and backend development skills.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
+- **User Authentication:** Registration and Login system
+- **Course Catalog:** Browse and filter different course categories
+- **Profile Management:** View and manage user details (optional)
+- **Responsive Design:** Works across desktop and mobile devices
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Technology Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React.js** (functional components, hooks)
+- **SCSS** for styling
+- **Material UI** for UI components
 
-### `npm test`
+### Backend
+- **Node.js** with **Express.js** for API server
+- **MongoDB** for database
+- **RESTful API** for managing courses and users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📦 Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+https://github.com/Yunis-Mammadov/Coursia.git
+cd student-panel
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Create a .env file (for backend) and add your MongoDB connection string:
 
-### `npm run eject`
+MONGO_URI=mongodb+srv://eduz_user:-vD6nXe2_uF3uUy@cluster10.yokb0n8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster10
+PORT=5000
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Frontend
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Backend (in backend folder)
+npm run dev / npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+##  📡 API Endpoints (Backend)
+    
+POST /api/user/register — Register a new user
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+POST /api/user/login — Login an existing user
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+GET /api/cards — Fetch all course cards
 
-### Code Splitting
+GET /api/cards/:id — Fetch course by ID
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+POST/PUT/DELETE /api/cards — Manage courses (admin only)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎨 Project Structure
 
-### Making a Progressive Web App
+/frontend    # React frontend
+/backend     # Node.js + Express backend
+/public      # Static assets
+/src
+  /components
+  /pages
+  /styles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Contributions, issues, and feature requests are welcome! Please open a pull request or issue.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📄 License
 
-### Deployment
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
