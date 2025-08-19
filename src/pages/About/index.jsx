@@ -90,7 +90,7 @@ const About = () => {
           </div>
           <form className='trial-input' onSubmit={handleSubmit}>
             <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Send it</button>
+            <button className='about_btn' type="submit">Send it</button>
           </form>
         </div>
 

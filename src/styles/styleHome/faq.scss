@@ -114,26 +114,13 @@
     }
 }
 
+
 @media (max-width: 480px) {
-    .faq-section {
-        width: 95%;
-        padding-bottom: 100px;
-
-        h1 {
-            font-size: 1.8rem;
-            padding: 40px;
-
-            &::after {
-                font-size: 3rem;
-                top: 0;
-            }
-        }
-    }
-
     .faq-container {
         .faq-questions {
             font-size: 0.85rem;
             padding: 5px 10px;
+            line-height: 1.4 !important; 
         }
 
         .faq-answer {

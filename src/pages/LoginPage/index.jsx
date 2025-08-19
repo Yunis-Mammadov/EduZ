@@ -23,7 +23,7 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
 
-      setStatus({ success: 'Daxil oldun!' });
+      setStatus({ success: 'Login successfully!' });
       setTimeout(() => navigate('/'), 1000);
     } catch (err) {
       setStatus({ error: err.response?.data?.message || 'Login failed.' });

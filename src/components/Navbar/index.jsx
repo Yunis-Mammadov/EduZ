@@ -90,13 +90,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              {isLoggedIn && (
-                <li>
-                  <Link to="/dashboard" onClick={closeSidebar}>
-                    Dashboard
-                  </Link>
-                </li>
-              )}
             </ul>
           </div>
         </>
