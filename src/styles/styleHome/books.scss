@@ -2,6 +2,7 @@
   text-align: center;
   background-color: whitesmoke;
   padding: 6rem 2rem 12rem;
+  background-color: red;
 
   .books-title {
     font-family: $font-heading;
@@ -10,22 +11,30 @@
     margin-bottom: 4rem;
     color: rgb(54, 80, 107);
   }
-
+  
   .books-panel {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    margin: 0 auto;
+    position: relative;
   }
 
   .books-card {
     position: relative;
-    width: 150px;
+    width: 200px;
     height: 200px;
+    margin-left: -50px;
+    margin-bottom: 50px;
     transition: transform 0.3s ease;
 
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+
     &:hover {
-      transform: translateY(-15px);
+      transform: translateY(-15px) translateX(15px);
+      z-index: 10;
     }
 
     .circle {
@@ -69,6 +78,41 @@
 
     &.coming-soon .badge {
       background-color: #7ed321;
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .books-card {
+    width: 180px;
+    margin-left: -20px; 
+
+    &:nth-child(2n+1) {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .books-card {
+    width: 45%; 
+    margin-left: -20px;
+
+    &:nth-child(2n) {
+      margin-left: -40px;
+    }
+  }
+}
+
+@media (max-width: 468px) {
+  .books-card {
+    width: 90%; 
+    margin-left: 0;
+    background-color: blue;
+
+    &:nth-child(2n) {
+      margin-left: 0;
     }
   }
 }

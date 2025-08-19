@@ -83,25 +83,29 @@
   }
 
   @media (max-width: 768px) {
+    display: flex;
     flex-direction: column;
-    padding: 7rem 1rem 6rem;
+    padding: 7rem 2rem 6rem;
 
-    &__content,
+    &__content {
+      max-width: 100%;
+
+      &__title {
+        font-size: 2rem;
+      }
+
+      &__buttons {
+        // justify-content: center;
+      }
+
+      &__stats {
+        // justify-content: center;
+      }
+    }
+
     &__image {
       max-width: 100%;
       text-align: center;
-    }
-
-    &__title {
-      font-size: 2rem;
-    }
-
-    &__buttons {
-      justify-content: center;
-    }
-
-    &__stats {
-      justify-content: center;
     }
   }
 }
