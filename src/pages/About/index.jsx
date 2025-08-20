@@ -5,6 +5,7 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import "../../styles/main.scss"
+import { Helmet } from 'react-helmet';
 
 const About = () => {
 
@@ -100,6 +101,10 @@ const About = () => {
           </div>
         )}
       </div>
+      <Helmet>
+      <title>About</title>
+      <meta name="description" content="About Page" />
+    </Helmet >
     </>
   )
 }

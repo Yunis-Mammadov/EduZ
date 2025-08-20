@@ -4,6 +4,7 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import AOS from 'aos';
 import '../../styles/main.scss';
 import { getAllCards } from '../../api/request';
+import { Helmet } from 'react-helmet';
 
 const Courses = () => {
   const [cards, setCards] = useState([]);
@@ -183,6 +184,10 @@ const Courses = () => {
           </div>
         </div>
       </div>
+      <Helmet>
+        <title>Courses</title>
+        <meta name="description" content="Courses Page" />
+      </Helmet>
     </>
   );
 };

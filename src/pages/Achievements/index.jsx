@@ -5,6 +5,7 @@ import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
 
 const Achievements = () => {
 
@@ -90,6 +91,10 @@ const Achievements = () => {
           ))}
         </section>
       </div>
+      <Helmet>
+      <title>Achieve</title>
+      <meta name="description" content="Achieve Page" />
+    </Helmet >
     </>
   )
 }

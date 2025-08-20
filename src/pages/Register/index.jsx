@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { signUp } from '../../api/request';
 import "../../styles/main.scss"
+import { Helmet } from 'react-helmet';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -40,54 +41,60 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-wrapper">
-        <div className="login-image">
-          <img src="0.svg" alt="Register Visual" />
-        </div>
+    <>
+      <div className="login-container">
+        <div className="login-wrapper">
+          <div className="login-image">
+            <img src="0.svg" alt="Register Visual" />
+          </div>
 
-        <div className="login-form">
-          <h2>Sign Up</h2>
+          <div className="login-form">
+            <h2>Sign Up</h2>
 
-          <Formik
-            initialValues={{ name: '', email: '', password: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting, status }) => (
-              <Form>
-                {['name', 'email', 'password'].map((field) => (
-                  <div className="floating-input" key={field}>
-                    <Field name={field} type={field === 'password' ? 'password' : 'text'} required />
-                    <label>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
-                    <ErrorMessage name={field} component="p" className="error-message" />
-                  </div>
-                ))}
+            <Formik
+              initialValues={{ name: '', email: '', password: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting, status }) => (
+                <Form>
+                  {['name', 'email', 'password'].map((field) => (
+                    <div className="floating-input" key={field}>
+                      <Field name={field} type={field === 'password' ? 'password' : 'text'} required />
+                      <label>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                      <ErrorMessage name={field} component="p" className="error-message" />
+                    </div>
+                  ))}
 
-                <button className="login-btn" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Registering...' : 'Sign Up'}
-                </button>
+                  <button className="login-btn" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Registering...' : 'Sign Up'}
+                  </button>
 
-                {status?.success && <p className="success-message">{status.success}</p>}
-                {status?.error && <p className="error-message">{status.error}</p>}
-              </Form>
-            )}
-          </Formik>
+                  {status?.success && <p className="success-message">{status.success}</p>}
+                  {status?.error && <p className="error-message">{status.error}</p>}
+                </Form>
+              )}
+            </Formik>
 
-          <Link to="/login" className="create-account">
-            Already have an account?
-          </Link>
+            <Link to="/login" className="create-account">
+              Already have an account?
+            </Link>
 
-          <div className="social-login">
-            <span>Or register with</span>
-            <div className="icons">
-              <i className="fab fa-google google"></i>
-              <i className="fa-solid fa-envelope google"></i>
+            <div className="social-login">
+              <span>Or register with</span>
+              <div className="icons">
+                <i className="fab fa-google google"></i>
+                <i className="fa-solid fa-envelope google"></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <Helmet>
+        <title>Register</title>
+        <meta name="description" content="Register Page" />
+      </Helmet >
+    </>
   );
 };
 
